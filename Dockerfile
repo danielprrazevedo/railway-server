@@ -38,10 +38,11 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 # Ative o mod_rewrite do Apache
 RUN a2enmod rewrite
 
+# Aplique as migrações no banco de dados
+RUN php artisan migrate
+
 # Exponha a porta 80
 EXPOSE 80
-
-RUN php artisan migrate
 
 # Inicie o servidor Apache
 CMD ["apache2-foreground"]
