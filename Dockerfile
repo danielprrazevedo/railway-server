@@ -1,5 +1,5 @@
 # Use uma imagem oficial do PHP com Apache
-FROM php:8.1-apache
+FROM php:8.2-apache
 
 # Instale dependências do sistema
 RUN apt-get update && apt-get install -y \
@@ -40,6 +40,8 @@ RUN a2enmod rewrite
 
 # Exponha a porta 80
 EXPOSE 80
+
+RUN php artisan migrate
 
 # Inicie o servidor Apache
 CMD ["apache2-foreground"]
