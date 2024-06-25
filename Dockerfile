@@ -1,5 +1,5 @@
 # Use uma imagem oficial do PHP com Apache
-FROM php:8.2-apache
+FROM php:8.1-apache
 
 # Instale dependências do sistema
 RUN apt-get update && apt-get install -y \
@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     nodejs \
     npm \
+    netcat \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd \
     && docker-php-ext-install pdo pdo_mysql zip
