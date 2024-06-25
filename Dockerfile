@@ -38,6 +38,10 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 # Ative o mod_rewrite do Apache
 RUN a2enmod rewrite
 
+# Configure o Apache
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+
 # Aplique as migrações no banco de dados
 RUN php artisan migrate --force
 
