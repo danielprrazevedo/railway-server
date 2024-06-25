@@ -39,7 +39,7 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 RUN a2enmod rewrite
 
 # Aplique as migrações no banco de dados
-RUN php artisan migrate
+RUN php artisan migrate --force
 
 # Exponha a porta 80
 EXPOSE 80
